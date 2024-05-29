@@ -34,6 +34,15 @@ impl TransportState {
         Ok(TransportState { cipherstates, pattern, dh_len, rs, initiator })
     }
 
+    /// Evil: doing this to use the two ciphers in different threads
+    /// DO NOT use with message more than 65535 bytes
+    /// DO NOT use with payload more than 65519 bytes
+    /// DO NOT use with one-way patterns
+    /// MAKE SURE to use correct cipher for each side
+    pub fn extract_cipherstates(self) -> CipherStates {
+        self.cipherstates
+    }
+
     /// Get the remote party's static public key, if available.
     ///
     /// Note: will return `None` if either the chosen Noise pattern

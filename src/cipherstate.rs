@@ -4,7 +4,7 @@ use crate::{
     types::Cipher,
 };
 
-pub(crate) struct CipherState {
+pub struct CipherState {
     cipher:  Box<dyn Cipher>,
     n:       u64,
     has_key: bool,
@@ -92,7 +92,7 @@ impl CipherState {
     }
 }
 
-pub(crate) struct CipherStates(pub CipherState, pub CipherState);
+pub struct CipherStates(pub CipherState, pub CipherState);
 
 impl CipherStates {
     pub fn new(initiator: CipherState, responder: CipherState) -> Result<Self, Error> {

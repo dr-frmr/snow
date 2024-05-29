@@ -53,7 +53,7 @@
 //!
 //! See `examples/simple.rs` for a more complete TCP client/server example with static keys.
 
-#![warn(missing_docs)]
+// #![warn(missing_docs)]
 
 macro_rules! copy_slices {
     ($inslice:expr, $outslice:expr) => {
@@ -70,6 +70,7 @@ macro_rules! static_slice {
 
 mod builder;
 mod cipherstate;
+pub use cipherstate::{CipherState, CipherStates};
 mod constants;
 pub mod error;
 mod handshakestate;
